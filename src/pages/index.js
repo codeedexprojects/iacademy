@@ -3,7 +3,7 @@ import React from 'react'
 
 function Index() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-black text-white">
      
       <header className="relative z-10 flex items-center justify-between p-6 md:p-8">
         <div className="flex items-center space-x-3">
