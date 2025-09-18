@@ -1,5 +1,6 @@
 import Beams from '@/components/Beams'
 import React from 'react'
+import Image from 'next/image' // Import the Image component
 
 function Index() {
   return (
@@ -7,13 +8,13 @@ function Index() {
      
       <header className="relative z-10 flex items-center justify-between p-6 md:p-8">
         <div className="flex items-center space-x-3">
-          <img
+          <Image
             src="/logo.jpg"
             alt="Logo"
+            width={120} // Set appropriate width
+            height={40} // Set appropriate height
             className="h-10 w-30 md:h-12 md:w-32 rounded-lg shadow-lg"
-            onError={(e) => {
-              e.target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0idXJsKCNncmFkaWVudDApIi8+CjxwYXRoIGQ9Ik0yMCAzMEMyNS41MjI5IDMwIDMwIDI1LjUyMjkgMzAgMjBDMzAgMTQuNDc3MSAyNS41MjI5IDEwIDIwIDEwQzE0LjQ3NzEgMTAgMTAgMTQuNDc3MSAxMCAyMEMxMCAyNS41MjI5IDE0LjQ3NzEgMzAgMjAgMzBaIiBmaWxsPSJ3aGl0ZSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJncmFkaWVudDAiIHgxPSIwIiB5MT0iMCIgeDI9IjQwIiB5Mj0iNDAiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzgzNTVGRiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMzQjgyRjYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K"
-            }}
+          
           />
           
         </div>
@@ -48,7 +49,7 @@ function Index() {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Something amazing is on the way. We're working hard to bring you an incredible experience.
+              Something amazing is on the way. We&apos;re working hard to bring you an incredible experience.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
