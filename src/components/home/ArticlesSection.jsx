@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 
 const ArticleCard = ({ 
@@ -43,6 +44,7 @@ const ArticleCard = ({
 );
 
 export default function ArticlesSection() {
+  const router = useRouter();
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -95,7 +97,7 @@ export default function ArticlesSection() {
 
         {/* View All Button */}
         <div className="text-center" data-aos="zoom-in" data-aos-delay={300}>
-          <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform shadow-lg">
+          <button  onClick={() => router.push('/blog')} className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform shadow-lg">
             View all
           </button>
         </div>

@@ -5,8 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useRouter } from 'next/navigation';
+
 
 export default function CoursesSection() {
+  const router = useRouter();
    useEffect(() => {
       AOS.init({
         duration: 800,
@@ -139,7 +142,7 @@ export default function CoursesSection() {
 
         {/* View All Button */}
         <div className="text-center" data-aos="zoom-in">
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors duration-200 shadow-md hover:shadow-lg">
+          <button onClick={() => router.push('/courses')}  className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors duration-200 shadow-md hover:shadow-lg">
             View All
           </button>
         </div>
