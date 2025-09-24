@@ -17,7 +17,7 @@ const TeamSection = () => {
     {
       name: "Mr. Ngammi Valui",
       title: "Director of iAcademy",
-      image: "/home/head.png",
+      image: "/about/person.png",
       bgColor: "bg-blue-700",
       text: `“At iAcademy Manipur, we believe education is more than knowledge—it’s about critical thinking, creativity, tech literacy, and resilience. Our vision is to equip the next generation with skills, character, and confidence to become leaders, innovators, and responsible global citizens.”`,
       reverse: false,
