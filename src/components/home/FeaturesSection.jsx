@@ -1,41 +1,74 @@
-import { Monitor, BookOpen, TrendingUp, Users } from 'lucide-react'
+"use client";
+import { Monitor, BookOpen, TrendingUp, Users } from "lucide-react";
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function FeaturesSection() {
   const features = [
     {
       id: 1,
       title: "Hands-on Training by Industry Experts",
-      icon: <BookOpen className="w-10 h-10 lg:w-12 lg:h-12 text-white" strokeWidth={1.5} />,
-      bgGradient: "from-orange-500 to-red-500"
+      icon: (
+        <BookOpen
+          className="w-10 h-10 lg:w-12 lg:h-12 text-white"
+          strokeWidth={1.5}
+        />
+      ),
+      bgGradient: "from-orange-500 to-red-500",
     },
     {
-      id: 2, 
+      id: 2,
       title: "Flexible Online & Offline Learning Options",
-      icon: <Monitor className="w-10 h-10 lg:w-12 lg:h-12 text-white" strokeWidth={1.5} />,
+      icon: (
+        <Monitor
+          className="w-10 h-10 lg:w-12 lg:h-12 text-white"
+          strokeWidth={1.5}
+        />
+      ),
       bgGradient: "from-purple-500 to-pink-500",
     },
     {
       id: 3,
-      title: "Career-Oriented Programs", 
-      icon: <TrendingUp className="w-10 h-10 lg:w-12 lg:h-12 text-white" strokeWidth={1.5} />,
-      bgGradient: "from-pink-500 to-red-500"
+      title: "Career-Oriented Programs",
+      icon: (
+        <TrendingUp
+          className="w-10 h-10 lg:w-12 lg:h-12 text-white"
+          strokeWidth={1.5}
+        />
+      ),
+      bgGradient: "from-pink-500 to-red-500",
     },
     {
       id: 4,
       title: "Personalized Guidance and Mentorship",
-      icon: <Users className="w-10 h-10 lg:w-12 lg:h-12 text-white" strokeWidth={1.5} />,
-      bgGradient: "from-blue-500 to-indigo-600"
-    }
-  ]
+      icon: (
+        <Users
+          className="w-10 h-10 lg:w-12 lg:h-12 text-white"
+          strokeWidth={1.5}
+        />
+      ),
+      bgGradient: "from-blue-500 to-indigo-600",
+    },
+  ];
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true, // animation triggers only once
+    });
+  }, []);
 
   return (
-    <section className="py-0">
+    <section className="py-0 bg-white">
       <div className="w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((feature) => (
+          {features.map((feature, index) => (
             <div
               key={feature.id}
               className={`relative bg-gradient-to-br ${feature.bgGradient} p-6 lg:p-6 xl:p-6 flex flex-row justify-between items-center text-left text-white group hover:scale-105 transition-transform duration-300 min-h-[180px]`}
+              data-aos="fade-up"
+              data-aos-delay={index * 200} // stagger animations
             >
               {/* Text */}
               <h3 className="text-base lg:text-lg font-semibold leading-tight max-w-[70%]">
@@ -56,5 +89,5 @@ export default function FeaturesSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

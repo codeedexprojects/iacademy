@@ -1,106 +1,105 @@
-import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+"use client";
+import React, { useEffect } from 'react';
+import { ArrowRight } from 'lucide-react';
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Link from 'next/link';
+
+
+const ArticleCard = ({ 
+  title, 
+  date, 
+  image, 
+  bgColor = "bg-gray-100",
+  link,
+  aosDelay = 0
+}) => (
+  <div className="group cursor-pointer" data-aos="fade-up" data-aos-delay={aosDelay}>
+    {/* Image Container */}
+    <div className={`h-64 ${bgColor} rounded-xl mb-4 overflow-hidden group-hover:scale-[1.02] transition-transform duration-300`}>
+      <img 
+        src={image} 
+        alt={title}
+        className="w-full h-full object-cover"
+      />
+    </div>
+    
+    {/* Content */}
+    <div>
+      <h3 className="text-gray-800 font-bold text-xl mb-3 leading-tight group-hover:text-gray-600 transition-colors">
+        {title}
+      </h3>
+      <div className="flex items-center justify-between">
+        <span className="text-gray-500 text-sm font-medium">{date}</span>
+       <Link href={link}>
+          <button className="text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1 text-sm font-medium group">
+            Read more
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
+       </Link>
+      </div>
+    </div>
+  </div>
+);
 
 export default function ArticlesSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100,
+    });
+  }, []);
+
   const articles = [
     {
-      id: 1,
-      title: "Digital Marketing in 2025: Key Trends You Should Know",
-      date: "02-08-2025",
-      image: "/articles/digital-marketing-2025.jpg",
-      imageAlt: "Social media icons including Facebook, YouTube, Instagram and LinkedIn"
-    },
-    {
-      id: 2,
-      title: "5 Essential Skills Every Student Must Learn Today",
-      date: "01-08-2025",
-      image: "/articles/essential-skills.jpg",
-      imageAlt: "Design tools and creative workspace with The Perfect logo"
-    },
-    {
-      id: 3,
-      title: "Why Robotics and AI Education Matter for Kids",
-      date: "03-08-2025",
-      image: "/articles/robotics-ai-education.jpg",
-      imageAlt: "White humanoid robot with blue accents"
-    }
-  ]
+    title: "Top 10 Digital Marketing Skills Every Student in Manipur Should Learn in 2025",
+    date: "02-08-2025",
+    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop&auto=format",
+    bgColor: "bg-blue-500",
+    link: "/blog-1"
+  },
+  {
+    title: "Why Digital Marketing is the Hottest Career Choice for Manipur’s Youth",
+    date: "01-08-2025",
+    image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=300&fit=crop&auto=format",
+    bgColor: "bg-gray-100",
+    link: "/blog-2"
+  },
+  {
+    title: "I Academy Manipur: Shaping Future Careers with Skill-Building Courses",
+    date: "03-08-2025",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop&auto=format",
+    bgColor: "bg-gray-200",
+    link: "/blog-3"
+  },
+  ];
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-6 lg:px-12">
-        {/* Section Header */}
-        <div className="mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Articles
-          </h2>
-          <p className="text-gray-600 max-w-2xl leading-relaxed">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-12" data-aos="fade-down">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Articles</h1>
+          <p className="text-gray-600 text-lg max-w-md">
             Stay Updated with the Latest in Education, Technology, and Innovation
           </p>
         </div>
 
         {/* Articles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {articles.map((article) => (
-            <article
-              key={article.id}
-              className="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 hover:border-gray-200"
-            >
-              {/* Article Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={article.image}
-                  alt={article.imageAlt}
-                  width={400}
-                  height={240}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  priority={false}
-                />
-                
-                {/* Image placeholder if images don't exist yet */}
-                {/* Uncomment this section if you need placeholders */}
-                {/* 
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="text-4xl mb-2">📱</div>
-                    <p className="text-sm">Article Image</p>
-                  </div>
-                </div>
-                */}
-                
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300"></div>
-              </div>
-
-              {/* Article Content */}
-              <div className="p-6">
-                <div className="mb-4">
-                  <h3 className="text-xl font-bold text-gray-900 leading-tight mb-3 group-hover:text-indigo-600 transition-colors duration-200">
-                    {article.title}
-                  </h3>
-                  
-                  <div className="text-sm text-gray-500 mb-4">
-                    {article.date}
-                  </div>
-                </div>
-
-                {/* Read More Button */}
-                <button className="flex items-center space-x-2 text-indigo-600 hover:text-indigo-800 font-medium transition-colors duration-200 group/btn">
-                  <span>Read more</span>
-                  <ArrowRight className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-200" />
-                </button>
-              </div>
-            </article>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {articles.map((article, index) => (
+            <ArticleCard key={index} {...article} aosDelay={index * 150} />
           ))}
         </div>
 
         {/* View All Button */}
-        <div className="text-center">
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl">
+        <div className="text-center" data-aos="zoom-in" data-aos-delay={300}>
+          <button className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-10 py-4 rounded-xl font-semibold text-lg hover:scale-105 transition-transform shadow-lg">
             View all
           </button>
         </div>
       </div>
-    </section>
-  )
+    </div>
+  );
 }

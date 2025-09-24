@@ -1,58 +1,45 @@
-'use client'
+"use client"
+import React, { useEffect, useState } from 'react'
+import ContactSection from './components/FormSection'
+import FAQsSection from '@/components/home/FAQsSection'
+import Image from 'next/image'
 
-export const dynamic = 'force-static'
+function page() {
 
-import { useState } from 'react'
-import Button from '@/components/ui/Button'
-import { API_ENDPOINTS } from '@/constants'
-
-export const metadata = {
-  title: 'Contact | iAcademy',
-}
-
-export default function ContactPage() {
-  const [status, setStatus] = useState(null)
-
-  async function onSubmit(e) {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    const payload = Object.fromEntries(formData.entries())
-    setStatus('Submitting...')
-    try {
-      const res = await fetch(API_ENDPOINTS.CONTACT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data?.message || 'Failed')
-      setStatus('Thanks! We will get back to you soon.')
-      e.currentTarget.reset()
-    } catch (err) {
-      setStatus(`Error: ${err.message}`)
+   const [loading, setLoading] = useState(true)
+  
+    useEffect(() => {
+      const timer = setTimeout(() => {
+        setLoading(false)
+      }, 1500)
+      return () => clearTimeout(timer)
+    }, [])
+  
+    if (loading) {
+      return (
+        <div className="fixed inset-0 flex flex-col items-center justify-center bg-white z-50">
+          <Image
+            src="/logo.png"
+            alt="iAcademy Logo"
+            width={120}
+            height={40}
+            priority
+            className="animate-pulse"
+          />
+          <div className="flex space-x-2 mt-6">
+            <span className="w-3 h-3 bg-green-500 rounded-full animate-bounce"></span>
+            <span className="w-3 h-3 bg-green-500 rounded-full animate-bounce [animation-delay:200ms]"></span>
+            <span className="w-3 h-3 bg-green-500 rounded-full animate-bounce [animation-delay:400ms]"></span>
+          </div>
+        </div>
+      )
     }
-  }
-
   return (
-    <main className="container mx-auto px-4 py-12">
-      <h1 className="text-3xl md:text-4xl font-bold mb-6">Contact Us</h1>
-
-      <form onSubmit={onSubmit} className="max-w-xl space-y-4">
-        <div>
-          <label className="block text-sm font-medium mb-1">Name</label>
-          <input name="name" required className="w-full border rounded-md px-3 py-2" />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Email</label>
-          <input type="email" name="email" required className="w-full border rounded-md px-3 py-2" />
-        </div>
-        <div>
-          <label className="block text-sm font-medium mb-1">Message</label>
-          <textarea name="message" rows={5} required className="w-full border rounded-md px-3 py-2" />
-        </div>
-        <Button type="submit">Send Message</Button>
-        {status && <p className="text-sm text-gray-600">{status}</p>}
-      </form>
-    </main>
+    <div>
+      <ContactSection></ContactSection>
+      <FAQsSection></FAQsSection>
+    </div>
   )
 }
+
+export default page

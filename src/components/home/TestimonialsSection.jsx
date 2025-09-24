@@ -1,201 +1,145 @@
-'use client'
-
-import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
-
-export default function TestimonialsSection() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0)
-
-  const students = [
-    { id: 1, name: "Rajesh Singh", image: "/testimonials/student1.jpg" },
-    { id: 2, name: "Priya Sharma", image: "/testimonials/student2.jpg" },
-    { id: 3, name: "Amit Kumar", image: "/testimonials/student3.jpg" },
-    { id: 4, name: "Sarah Johnson", image: "/testimonials/student4.jpg" },
-    { id: 5, name: "David Chen", image: "/testimonials/student5.jpg" },
-    { id: 6, name: "Maya Patel", image: "/testimonials/student6.jpg" },
-    { id: 7, name: "John Williams", image: "/testimonials/student7.jpg" },
-    { id: 8, name: "Lisa Brown", image: "/testimonials/student8.jpg" },
+"use client"
+import React, { useState, useEffect } from "react"
+import Image from "next/image"
+const TestimonialsSection = () => {
+  const avatars = [
+    { id: 1, src: "/testimonials/image1.jpg", alt: "Student 1" },
+    { id: 2, src: "/testimonials/image2.jpg", alt: "Student 2" },
+    { id: 3, src: "/testimonials/image3.jpg", alt: "Student 3" },
+    { id: 4, src: "/testimonials/image4.png", alt: "Student 4" },
+    { id: 5, src: "/testimonials/image5.jpg", alt: "Student 5" },
+    { id: 6, src: "/testimonials/image6.jpg", alt: "Student 6" },
+    { id: 7, src: "/testimonials/image7.jpg", alt: "Student 7" },
+   
   ]
-
   const testimonials = [
     {
       id: 1,
-      name: "Rajesh Singh",
-      text: "As a working professional, I needed flexible learning options. iAcademy Manipur's online courses provided exactly that, with detailed modules and constant support. Their Career Development Workshop was incredibly useful in polishing my job application skills and interview confidence.",
+      text: "As a working professional, I needed flexible learning options. iAcademy Manipur's online courses provided exactly that, with detailed modules and consistent support.",
+      author: "Rajesh Singh",
+      avatar: "/testimonials/image1.jpg",
       rating: 5,
-      image: "/testimonials/student1.jpg"
     },
     {
       id: 2,
-      name: "Rajesh Singh",
-      text: "The Digital Marketing course at iAcademy Manipur helped me gain practical skills and land my first job in just 3 months. Highly recommended!",
+      text: "The Digital Marketing course at iAcademy Manipur helped me gain practical skills and land my first job in just 3 months. Highly recommended",
+      author: "Rajesh Singh",
+      avatar: "/testimonials/image2.jpg",
       rating: 5,
-      image: "/testimonials/student2.jpg"
+      highlighted: true,
     },
     {
       id: 3,
-      name: "Rajesh Singh", 
-      text: "iAcademy Manipur is more than just a training institute – it's a community of learners and experts. The Graphic Design Mastery course helped me build a professional portfolio, and the personalized mentorship gave me the confidence to take freelance projects. Highly recommended for creative minds!",
+      text: "iAcademy Manipur is more than just a training institute - it's a community of learners and experts. The Graphic Design Mastery course helped me build a professional portfolio.",
+      author: "Rajesh Singh",
+      avatar: "/testimonials/image3.jpg",
       rating: 5,
-      image: "/testimonials/student3.jpg"
     },
     {
       id: 4,
-      name: "Rajesh Singh",
-      text: "My child always showed exceptional curiosity about how things work. When we enrolled in the course at iAcademy Manipur, I've never spoken a word. But they became grateful for their futuristic methods.",
+      text: "My child always struggled with traditional studies, but the course at iAcademy Manipur made learning enjoyable and sparked a deep interest.",
+      author: "Rajesh Singh",
+      avatar: "/testimonials/image5.jpg",
       rating: 5,
-      image: "/testimonials/student4.jpg"
-    }
+    },
   ]
-
-  // Auto-rotate testimonials
+  const [currentIndex, setCurrentIndex] = useState(0)
+  // Auto-slide every 4s
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 5000) // Change every 5 seconds
-
-    return () => clearInterval(timer)
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
+    }, 4000)
+    return () => clearInterval(interval)
   }, [testimonials.length])
-
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+  const getVisibleTestimonials = () => {
+    const visible = []
+    for (let i = -1; i <= 1; i++) {
+      const index = (currentIndex + i + testimonials.length) % testimonials.length
+      visible.push({ ...testimonials[index], position: i })
+    }
+    return visible
   }
-
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
-  }
-
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }, (_, i) => (
-      <Star
-        key={i}
-        className={`w-4 h-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
-      />
-    ))
-  }
-
+  const StarRating = ({ rating }) => (
+    <div className="flex gap-0.5 mb-4">
+      {[...Array(5)].map((_, index) => (
+        <svg
+          key={index}
+          className={`w-4 h-4 ${index < rating ? "text-yellow-400" : "text-gray-300"}`}
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  )
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="container mx-auto px-6 lg:px-12">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Our happy students
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Hear from Our Satisfied students: Read Our Testimonials to Learn More about Our Digital Marketing Services
-          </p>
-        </div>
-
-        {/* Student Avatars Row */}
-        <div className="flex justify-center mb-12">
-          <div className="flex space-x-2 overflow-x-auto pb-4">
-            {students.map((student, index) => (
+    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Avatar Row */}
+        <div className="flex justify-center items-center mb-16">
+          <div className="flex  overflow-x-auto scrollbar-hide px-2 max-w-full">
+            {avatars.map((avatar) => (
               <div
-                key={student.id}
-                className={`flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border-4 transition-all duration-300 cursor-pointer ${
-                  currentTestimonial === index % testimonials.length
-                    ? 'border-indigo-500 scale-110'
-                    : 'border-gray-200 hover:border-gray-300'
-                }`}
-                onClick={() => setCurrentTestimonial(index % testimonials.length)}
+                key={avatar.id}
+                className="w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0"
               >
-                <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center text-white text-xs font-medium">
-                  {student.name.split(' ').map(n => n[0]).join('')}
-                </div>
-                {/* Replace with actual images when available */}
-                {/* 
                 <Image
-                  src={student.image}
-                  alt={student.name}
-                  width={64}
-                  height={64}
+                  src={avatar.src}
+                  alt={avatar.alt}
+                  width={80}
+                  height={80}
                   className="w-full h-full object-cover"
                 />
-                */}
               </div>
             ))}
           </div>
         </div>
-
         {/* Testimonials Carousel */}
-        <div className="relative max-w-6xl mx-auto">
-          <div className="overflow-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
-            >
-              {testimonials.map((testimonial, index) => (
-                <div key={testimonial.id} className="w-full flex-shrink-0 px-4">
-                  <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 max-w-2xl mx-auto">
-                    {/* Stars Rating */}
-                    <div className="flex items-center space-x-1 mb-6">
-                      {renderStars(testimonial.rating)}
-                    </div>
-
-                    {/* Testimonial Text */}
-                    <blockquote className="text-gray-700 text-lg leading-relaxed mb-6">
+        <div className="relative">
+          <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8">
+            {/* Cards */}
+            <div className="flex gap-4 sm:gap-6 items-center justify-center w-full max-w-5xl">
+              {getVisibleTestimonials().map((testimonial) => (
+                <div
+                  key={`${testimonial.id}-${testimonial.position}`}
+                  className={`transition-all duration-500 rounded-xl bg-white px-4 sm:px-6 py-6 ${
+                    testimonial.position === 0
+                      ? "w-full sm:w-96 scale-100 opacity-100 shadow-2xl"
+                      : "hidden sm:block sm:w-80 scale-95 opacity-70 shadow-md"
+                  } ${
+                    testimonial.position === -1
+                      ? "order-1"
+                      : testimonial.position === 1
+                      ? "order-3"
+                      : "order-2"
+                  }`}
+                >
+                  <div>
+                    <StarRating rating={testimonial.rating} />
+                    <blockquote className="text-gray-600 mb-6 leading-relaxed text-sm sm:text-base">
                       "{testimonial.text}"
                     </blockquote>
-
-                    {/* Student Info */}
-                    <div className="flex items-center space-x-4">
-                      <div className="w-12 h-12 rounded-full overflow-hidden bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center text-white text-sm font-medium">
-                        {testimonial.name.split(' ').map(n => n[0]).join('')}
-                      </div>
-                      {/* Replace with actual image when available */}
-                      {/* 
+                    <div className="flex items-center gap-3">
                       <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
+                        src={testimonial.avatar}
+                        alt={testimonial.author}
                         width={48}
                         height={48}
-                        className="w-12 h-12 rounded-full object-cover"
+                        className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover"
                       />
-                      */}
-                      <div>
-                        <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                        <p className="text-gray-500 text-sm">Verified Student</p>
-                      </div>
+                      <span className="font-medium text-gray-800 text-sm sm:text-base">
+                        {testimonial.author}
+                      </span>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white hover:bg-gray-50 rounded-full p-3 shadow-lg border border-gray-200 transition-all duration-200"
-          >
-            <ChevronLeft className="w-6 h-6 text-gray-600" />
-          </button>
-
-          <button
-            onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white hover:bg-gray-50 rounded-full p-3 shadow-lg border border-gray-200 transition-all duration-200"
-          >
-            <ChevronRight className="w-6 h-6 text-gray-600" />
-          </button>
-        </div>
-
-        {/* Dots Indicator */}
-        <div className="flex justify-center space-x-2 mt-8">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentTestimonial(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                currentTestimonial === index
-                  ? 'bg-indigo-600'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-            />
-          ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }
+export default TestimonialsSection

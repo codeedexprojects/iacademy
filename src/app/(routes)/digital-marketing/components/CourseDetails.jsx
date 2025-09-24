@@ -1,6 +1,6 @@
 export default function DigitalMarketingCourse() {
   return (
-    <div className=" mx-auto bg-white  shadow-lg overflow-hidden">
+    <div className="mx-auto bg-white shadow-lg overflow-hidden">
       <div className="flex flex-col md:flex-row">
         {/* Left Content Section */}
         <div className="flex-1 p-8">
@@ -59,37 +59,14 @@ export default function DigitalMarketingCourse() {
             </ul>
           </div>
         </div>
+
         {/* Right Image Section */}
-        <div className="md:w-80 bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-8">
-          <div className="relative">
-            {/* 3D Infinity Symbol */}
-            <div className="w-48 h-32 relative">
-              <div className="absolute inset-0 transform rotate-90">
-                <svg viewBox="0 0 200 120" className="w-full h-full">
-                  <defs>
-                    <linearGradient id="infinityGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#3B82F6" />
-                      <stop offset="50%" stopColor="#1D4ED8" />
-                      <stop offset="100%" stopColor="#2563EB" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M50 60 C30 30, 10 30, 30 60 C50 90, 70 90, 50 60 M50 60 C70 30, 90 30, 70 60 C50 90, 30 90, 50 60"
-                    stroke="url(#infinityGradient)"
-                    strokeWidth="12"
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="drop-shadow-lg"
-                  />
-                </svg>
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute top-4 right-8 w-3 h-3 bg-blue-400 rounded-full opacity-60"></div>
-              <div className="absolute bottom-6 left-12 w-2 h-2 bg-blue-300 rounded-full opacity-40"></div>
-              <div className="absolute top-12 left-4 w-1.5 h-1.5 bg-blue-500 rounded-full opacity-50"></div>
-            </div>
-          </div>
+        <div className="md:w-80 flex items-center justify-center p-8">
+          <img
+            src="/course/image2.jpg"
+            alt="Digital Marketing Course"
+            className="w-full h-80 object-cover rounded-lg shadow-lg"
+          />
         </div>
       </div>
     </div>
