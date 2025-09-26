@@ -53,7 +53,6 @@ export default function AcademicHeadSection() {
                 </div>
               </div>
 
-
               <div className="flex justify-center lg:justify-end items-end" data-aos="fade-left">
                 <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-96">
                   <Image

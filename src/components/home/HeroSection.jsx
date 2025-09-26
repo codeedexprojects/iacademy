@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Sora } from "next/font/google";
+import { useRouter } from 'next/navigation';
+
 
 const sora = Sora({
   subsets: ["latin"],
@@ -11,6 +13,10 @@ const sora = Sora({
 });
 
 export default function HeroSection() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/contact');
+  };
   useEffect(() => {
     AOS.init({
       duration: 1000, 
@@ -75,7 +81,7 @@ export default function HeroSection() {
             </div>
 
             <div className="pt-4" data-aos="fade-up" data-aos-delay="400">
-              <button className="bg-white text-gray-800 px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg">
+              <button onClick={handleClick} className="bg-white text-gray-800 px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 shadow-lg">
                 Contact Us
               </button>
             </div>
