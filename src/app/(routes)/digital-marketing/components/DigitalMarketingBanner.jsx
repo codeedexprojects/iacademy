@@ -4,8 +4,14 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useRouter } from 'next/navigation';
 
 export default function DigitalMarketingBanner() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/contact');
+  };
+
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -51,6 +57,7 @@ export default function DigitalMarketingBanner() {
               Master the Art of Digital Marketing to Grow Brands & Drive Results
             </p>
             <button
+              onClick={handleClick}
               className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm sm:text-lg transition duration-300"
               data-aos="fade-up"
               data-aos-delay="300"

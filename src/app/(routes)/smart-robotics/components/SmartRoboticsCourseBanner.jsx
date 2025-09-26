@@ -4,9 +4,15 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useRouter } from 'next/navigation';
+
 
 
 export default function SmartRoboticsCourseBanner() {
+  const router = useRouter();
+  const handleClick = () => {
+    router.push('/contact');
+  };
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -44,7 +50,9 @@ export default function SmartRoboticsCourseBanner() {
               data-aos-delay="150" className="text-sm sm:text-base md:text-xl mb-4 sm:mb-6 max-w-full sm:max-w-md">
               Fun and Educational Program to Introduce Children (Ages 8–15) to Robotics, Artificial Intelligence, and Coding Through Interactive Projects and Hands-On Learning.
             </p>
-            <button  data-aos="fade-up"
+            <button 
+            onClick={handleClick}
+             data-aos="fade-up"
               data-aos-delay="300" className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-md text-sm sm:text-lg transition duration-300">
               Enroll now
             </button>

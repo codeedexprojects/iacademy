@@ -92,7 +92,7 @@ export default function CoursesSection() {
               data-aos-delay={index * 100} // staggered animation
             >
               {/* Course Image/Header */}
-              <div className="relative h-54 sm:h-62 overflow-hidden">
+              <div className="relative h-64 sm:h-75 overflow-hidden">
                 <Image
                   src={course.image}
                   alt={course.title}
