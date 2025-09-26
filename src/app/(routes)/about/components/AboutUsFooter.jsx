@@ -50,7 +50,7 @@ export default function AboutUsFooter() {
             <p>
               At iAcademy Manipur, we believe education should do more than prepare students for 
               exams—it should empower them to innovate, explore, and achieve. Founded by{' '}
-              <span className="font-semibold text-white">M.K. Preshow Shimmu</span> (Former Deputy Speaker) and{' '}
+              {/* <span className="font-semibold text-white">M.K. Preshow Shimmu</span> (Former Deputy Speaker) and{' '} */}
               <span className="font-semibold text-white">Mr. Ngammi Valui</span> (Director), iAcademy 
               Manipur was established with a mission to nurture talent, unlock potential, and build 
               leaders of tomorrow.

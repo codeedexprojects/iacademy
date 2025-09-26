@@ -65,12 +65,12 @@ export default function HeroSection() {
                 At iAcademy Manipur, we empower learners through cutting-edge
                 courses designed to bridge the gap between knowledge and
                 practical skills. Led by the visionary Director, and our esteemed
-                Director{" "}
+                Director{" "} <br></br>
                 <span className="text-orange-300 font-semibold">
                   Mr. Ngammi Valui
                 </span>
                 , we are dedicated to nurturing talent and promoting excellence
-                in education.
+                in education to impart quality education.
               </p>
             </div>
 

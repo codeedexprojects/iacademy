@@ -35,12 +35,12 @@ export default function AcademicHeadSection() {
               <div className="space-y-6" data-aos="fade-right">
                 <div data-aos="fade-up">
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-                    Our Academic Head
+                    Meet Our Academic Head
                   </h2>
                   
                   {/* Name Badge with Qualification */}
                   <div className="inline-block bg-white backdrop-blur-sm px-4 py-2 rounded-full text-black text-sm font-semibold mb-4 border border-white/30">
-                    SEARCHJOY KHAMRANG, PhD
+                    Phashokmi Vashi
                   </div>
 
                   {/* New heading before description */}
@@ -52,7 +52,8 @@ export default function AcademicHeadSection() {
                 {/* Description */}
                 <div className="space-y-4 text-gray-100 leading-relaxed text-sm sm:text-base" data-aos="fade-up" data-aos-delay="150">
                   <p>
-                    At iAcademy Manipur, we believe education is more than knowledge—it’s about critical thinking, creativity, tech literacy, and resilience. Our vision is to equip the next generation with skills, character, and confidence to become leaders, innovators, and responsible global citizens.
+                   Phashokmi Vashi holds a Master's and an M.Phil. degree in Education, specializing in Teachers Autonomy and the Re-Imagination of Inclusive Consciousness, respectively.
+Currently, at the University of Delhi, he is working on his doctoral thesis on Culture, Education, and their interfaces, with a special focus on the Manipur context. His other interests include Philosophy, Psychoanalysis, Translation Studies, Philology, and ICT. He has authored two books: "A Draft to Final Hinge" and "Nasha Iniwui Khararchan" (A Dove and Our Story). His current projects center on Translation.
                   </p>
                 </div>
               </div>
@@ -61,7 +62,7 @@ export default function AcademicHeadSection() {
               <div className="flex justify-center lg:justify-end" data-aos="fade-left">
                 <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:w-96 lg:h-96">
                   <Image 
-                    src="/home/head.png" 
+                    src="/home/head1.png" 
                     alt="Joy Kharmawad - Academic Head"
                     width={384}
                     height={384}

@@ -23,15 +23,16 @@ const TeamSection = () => {
       reverse: false,
       topShape: true, 
     },
-    {
-      name: "Joy Khamrang",
-      title: "Academic head",
-      image: "/home/head.png", 
-      bgColor: "bg-red-700",
-      text: `At iAcademy Manipur, we believe education is more than knowledge—it’s about critical thinking, creativity, tech literacy, and resilience. Our vision is to equip the next generation with skills, character, and confidence to become leaders, innovators, and responsible global citizens.`,
-      reverse: true,
-      topShape: true, 
-    },
+   {
+  name: "Phashokmi Vashi",
+  title: "Academic Head",
+  image: "/home/head1.png", 
+  bgColor: "bg-red-700",
+  text: `“Our approach at iAcademy is to nurture curiosity and encourage students to explore beyond textbooks. We focus on personalized learning, practical exposure, and a supportive environment that empowers every learner to grow academically and personally.”`,
+  reverse: true,
+  topShape: true, 
+}
+
   ];
 
   return (

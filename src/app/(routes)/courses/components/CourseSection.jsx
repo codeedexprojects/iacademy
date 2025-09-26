@@ -92,7 +92,7 @@ export default function PopularCoursesSection() {
       title: "Smart Robotics and AI for Kids",
       description:
         "Prepare Early for IAS Success | Interactive Learning for Class 5 to 10 Students",
-      image: "/course/robotics.png",
+      image: "/course/rootics.png",
       icon: <GraduationCap className="w-6 h-6 text-yellow-600" />,
       status: "Online",
       link: "/smart-robotics",
@@ -119,7 +119,7 @@ export default function PopularCoursesSection() {
               data-aos-delay={index * 100} // staggered animation
             >
               {/* Course Image/Header */}
-              <div className="relative h-44 sm:h-52 overflow-hidden">
+              <div className="relative h-54 sm:h-62 overflow-hidden">
                 <Image
                   src={course.image}
                   alt={course.title}
